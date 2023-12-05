@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap"
+      rel="stylesheet"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -9,9 +15,105 @@
     />
     <meta name="author" content="Oxama Arafeh" />
     <meta name="keywords" content="Around, The, US, Pictures, Nature" />
-    <title>And The US</title>
+    <title>Around The US</title>
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
-  <body></body>
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__formatting">
+        <img
+          class="header__image"
+          src="./images/logo.svg"
+          alt="Around the US logo"
+        />
+      </header>
+      <main>
+        <section class="profile page__formatting">
+          <img
+            class="profile__image"
+            src="./images/jacques-cousteau.jpg"
+            alt="avatar"
+          />
+          <div class="profile__info">
+            <h1 class="profile__title">Jacques Cousteau</h1>
+            <button class="profile__edit-button"></button>
+            <p class="profile__paragraph">Explorer</p>
+          </div>
+          <button class="profile__add-button"></button>
+        </section>
+        <section class="cards page__formatting">
+          <ul class="cards__list">
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/yosemite.jpg"
+                alt="image of yosemite"
+              />
+              <div class="card__description">
+                Yosemite Valley
+                <button class="card__button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/lake-louise.jpg"
+                alt="image of lake louise"
+              />
+              <div class="card__description">
+                Lake Louise
+                <button class="card__button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/bald-mountains.jpg"
+                alt="image of bald mountains"
+              />
+              <div class="card__description">
+                Bald Mountains
+                <button class="card__button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/latemar.jpg"
+                alt="image of latemar"
+              />
+              <div class="card__description">
+                Latemar
+                <button class="card__button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/vanoise.jpg"
+                alt="image of vanoise national park"
+              />
+              <div class="card__description">
+                Vanoise National Park
+                <button class="card__button"></button>
+              </div>
+            </li>
+            <li class="card">
+              <img
+                class="card__image"
+                src="./images/lago.jpg"
+                alt="image of lago di braies"
+              />
+              <div class="card__description">
+                Lago Di Braies
+                <button class="card__button"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer page__formatting">© 2022 Around The U.S.</footer>
+    </div>
+  </body>
 </html>
