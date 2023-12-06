@@ -4,7 +4,13 @@
   border-bottom: 1px solid #545454;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 580px) {
+  .header__image {
+    padding-left: 27px;
+  }
+}
+
+@media screen and (min-width: 581px) and (max-width: 945px) {
   .header__image {
     padding-left: 27px;
   }
