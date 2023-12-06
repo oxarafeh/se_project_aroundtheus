@@ -48,3 +48,8 @@
   width: 21px;
   border: none;
 }
+
+.card__button:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
