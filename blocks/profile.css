@@ -18,13 +18,13 @@
   grid-template-areas:
     "title button"
     "description description";
-  grid-template-columns: minmax(auto, 373px) auto;
+  grid-template-columns: minmax(auto, 380px) auto;
   row-gap: 5px;
   column-gap: 18px;
 }
 
 .profile__title {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "arial", sans-serif;
   font-size: 42px;
   font-weight: 500;
   line-height: 1.2;
@@ -32,10 +32,14 @@
   text-align: left;
   grid-area: title;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 380px;
 }
 
 .profile__paragraph {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "arial", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
@@ -43,6 +47,10 @@
   text-align: left;
   grid-area: description;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 380px;
 }
 
 .profile__edit-button {
@@ -52,6 +60,7 @@
   border: 1px solid #ffffff;
   grid-area: button;
   align-self: center;
+  margin-right: 20px;
 }
 
 .profile__edit-button:hover {
