@@ -18,17 +18,20 @@
   .footer {
     margin-top: 48px;
     margin-bottom: 36px;
-    margin-left: 19px;
   }
 
   .footer__copyright {
     font-size: 14px;
+    margin-left: 19px;
   }
 }
 
 @media screen and (min-width: 581px) and (max-width: 945px) {
   .footer {
     margin-bottom: 36px;
+  }
+
+  .footer__copyright {
     margin-left: 19px;
   }
 }
