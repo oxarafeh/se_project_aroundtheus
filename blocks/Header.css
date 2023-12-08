@@ -5,6 +5,10 @@
 }
 
 @media screen and (max-width: 580px) {
+  .header {
+    min-height: 56px;
+  }
+
   .header__image {
     padding-left: 27px;
     max-width: 126px;

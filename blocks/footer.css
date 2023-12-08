@@ -1,5 +1,6 @@
 .footer {
   margin-top: 67px;
+  margin-bottom: 60px;
 }
 
 .footer__copyright {
@@ -16,9 +17,18 @@
 @media screen and (max-width: 580px) {
   .footer {
     margin-top: 48px;
+    margin-bottom: 36px;
+    margin-left: 19px;
   }
 
   .footer__copyright {
     font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 581px) and (max-width: 945px) {
+  .footer {
+    margin-bottom: 36px;
+    margin-left: 19px;
   }
 }

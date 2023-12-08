@@ -6,7 +6,7 @@
 .page__formatting {
   max-width: 880px;
   width: 100%;
-  position: reltaive;
+  position: relative;
   margin: 0 auto;
 }
 
