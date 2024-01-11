@@ -23,7 +23,7 @@
         />
       </header>
       <main>
-        <section class="profile page__formatting">
+        <section class="profile page__formatting" id="profile">
           <img
             class="profile__image"
             src="./images/jacques-cousteau.jpg"
@@ -31,7 +31,11 @@
           />
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
-            <button type="button" class="profile__edit-button"></button>
+            <button
+              type="button"
+              class="profile__edit-button"
+              id="profile-edit-btn"
+            ></button>
             <p class="profile__paragraph">Explorer</p>
           </div>
           <button type="button" class="profile__add-button"></button>
@@ -116,14 +120,24 @@
       </footer>
     </div>
 
-    <div class="modal">
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <p class="modal__heading">Edit Profile</p>
         <form action="URL" class="modal__form">
-          <button class="modal__close"></button>
-          <input type="text" name="title" />
-          <input type="text" name="paragraph" />
-          <button class="modal__button">Save</button>
+          <button
+            type="button"
+            class="modal__close"
+            id="profile-edit-modal-close-btn"
+          ></button>
+          <input type="text" placeholder="Name" name="title" />
+          <input type="text" placeholder="description" name="paragraph" />
+          <button
+            type="button"
+            class="modal__button"
+            id="profile-edit-save-btn"
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>

@@ -30,4 +30,21 @@ const initialCards = [
   },
 ];
 
-console.log(initialCards);
+const modal = document.querySelector("#profile-edit-modal");
+const modalCloseBtn = modal.querySelector("#profile-edit-modal-close-btn");
+const modalSaveBtn = modal.querySelector("#profile-edit-save-btn");
+const profile = document.querySelector("#profile");
+const profileEditBtn = profile.querySelector("#profile-edit-btn");
+
+function openModal() {
+  modal.classList.add(".modal__opened");
+  console.log("modal opened");
+}
+
+function closeModal() {
+  modal.classList.remove(".modal__opened");
+  console.log("modal closed");
+}
+
+profileEditBtn.addEventListener("click", openModal);
+modalCloseBtn.addEventListener("click", closeModal);
