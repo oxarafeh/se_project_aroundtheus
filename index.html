@@ -30,89 +30,18 @@
             alt="avatar"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
             <button
               type="button"
               class="profile__edit-button"
               id="profile-edit-btn"
             ></button>
-            <p class="profile__paragraph">Explorer</p>
+            <p class="profile__paragraph" id="profile-description">Explorer</p>
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
         <section class="cards page__formatting">
-          <ul class="cards__list">
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/yosemite.jpg"
-                alt="image of yosemite"
-              />
-              <div class="card__description">
-                <h2 class="card__text">Yosemite Valley</h2>
-
-                <button type="button" class="card__button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/lake-louise.jpg"
-                alt="image of lake louise"
-              />
-              <div class="card__description">
-                <h2 class="card__text">Lake Louise</h2>
-
-                <button type="button" class="card__button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/bald-mountains.jpg"
-                alt="image of bald mountains"
-              />
-              <div class="card__description">
-                <h2 class="card__text">Bald Mountains</h2>
-
-                <button type="button" class="card__button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/latemar.jpg"
-                alt="image of latemar"
-              />
-              <div class="card__description">
-                <h2 class="card__text">Latemar</h2>
-
-                <button type="button" class="card__button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/vanoise.jpg"
-                alt="image of vanoise national park"
-              />
-              <div class="card__description">
-                <h2 class="card__text">Vanoise National Park</h2>
-                <button type="button" class="card__button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/lago.jpg"
-                alt="image of lago di braies"
-              />
-              <div class="card__description">
-                <h2 class="card__text">Lago Di Braies</h2>
-                <button type="button" class="card__button"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards__list"></ul>
         </section>
       </main>
       <footer class="footer page__formatting">
@@ -129,10 +58,22 @@
             class="modal__close"
             id="profile-edit-modal-close-btn"
           ></button>
-          <input type="text" placeholder="Name" name="title" />
-          <input type="text" placeholder="description" name="paragraph" />
+          <input
+            type="text"
+            placeholder="Name"
+            name="title"
+            id="profile-name-input"
+            class="form__input"
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            name="paragraph"
+            id="profile-description-input"
+            class="form__input"
+          />
           <button
-            type="button"
+            type="submit"
             class="modal__button"
             id="profile-edit-save-btn"
           >
@@ -141,6 +82,18 @@
         </form>
       </div>
     </div>
+
+    <template id="card-template"> </template>
+
+    <li class="card">
+      <img class="card__image" src="" alt="" />
+      <div class="card__description">
+        <h2 class="card__text"></h2>
+
+        <button type="button" class="card__button"></button>
+      </div>
+    </li>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
