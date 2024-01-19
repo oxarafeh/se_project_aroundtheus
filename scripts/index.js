@@ -43,6 +43,7 @@ const profileEditForm = modal.querySelector(".modal__form");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
+
 //this function opens the modal box for the profile editor
 function openModal() {
   //grab current profile name from html
@@ -77,14 +78,7 @@ function closeModal() {
   modal.classList.remove("modal__opened");
 }
 
-//these listen for the clicks, and open the modal
-profileEditBtn.addEventListener("click", openModal);
-modalCloseBtn.addEventListener("click", closeModal);
-
-//listens for the form being submited
-profileEditForm.addEventListener("submit", saveModal);
-
-initialCards.forEach((cardData) => {
+function GetCardElement(cardData) {
   //clone the template
   const cardElement = cardTemplate.cloneNode(true);
   //grab the card title and image
@@ -96,6 +90,19 @@ initialCards.forEach((cardData) => {
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   //console.log(cardElement);
+  return cardElement;
+}
+
+//these listen for the clicks, and open the modal
+profileEditBtn.addEventListener("click", openModal);
+modalCloseBtn.addEventListener("click", closeModal);
+
+//listens for the form being submited
+profileEditForm.addEventListener("submit", saveModal);
+
+initialCards.forEach((cardData) => {
+  //calls function that pulls card data
+  const cardElement = GetCardElement(cardData);
   //push card elemnt into list
   cardListEl.append(cardElement);
 });
