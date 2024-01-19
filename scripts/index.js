@@ -56,7 +56,7 @@ function openModal() {
   modalDescInput.value = currentDesc;
   //open modal
   modal.classList.add("modal__opened");
-  console.log(currentName);
+  //console.log(currentName);
 }
 
 //saves the values inputted into the modal and displays them on the page
