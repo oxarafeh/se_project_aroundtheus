@@ -10,7 +10,7 @@
   display: none;
 }
 
-.modal__opened {
+.modal_opened {
   display: flex;
 }
 
@@ -115,7 +115,7 @@
 
 @media screen and (max-width: 880px) {
   .modal__container {
-    padding: 44px;
+    padding: 22px;
     max-width: 282px;
     max-height: 322px;
   }
@@ -133,5 +133,10 @@
 
   .modal__button {
     margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .modal__heading {
+    font-size: 18px;
   }
 }

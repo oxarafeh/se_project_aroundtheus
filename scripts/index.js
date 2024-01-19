@@ -47,15 +47,15 @@ const cardListEl = document.querySelector(".cards__list");
 //this function opens the modal box for the profile editor
 function openModal() {
   //grab current profile name from html
-  let currentName = profileName.textContent;
+  const currentName = profileName.textContent;
   //grab current description from html
-  let currentDesc = profileDesc.textContent;
+  const currentDesc = profileDesc.textContent;
   //insert current profile name into modal
   modalNameInput.value = currentName;
   //insert current description into modal
   modalDescInput.value = currentDesc;
   //open modal
-  modal.classList.add("modal__opened");
+  modal.classList.add("modal_opened");
   //console.log(currentName);
 }
 
@@ -64,9 +64,9 @@ function saveModal(e) {
   //prevent page from re loading
   e.preventDefault();
   //grab input name
-  let inputName = modalNameInput.value;
+  const inputName = modalNameInput.value;
   //grab input description
-  let inputDesc = modalDescInput.value;
+  const inputDesc = modalDescInput.value;
   //set values equal to page values
   profileName.textContent = inputName;
   profileDesc.textContent = inputDesc;
@@ -75,10 +75,10 @@ function saveModal(e) {
 
 //this function closes the profile editor
 function closeModal() {
-  modal.classList.remove("modal__opened");
+  modal.classList.remove("modal_opened");
 }
 
-function GetCardElement(cardData) {
+function getCardElement(cardData) {
   //clone the template
   const cardElement = cardTemplate.cloneNode(true);
   //grab the card title and image
@@ -102,7 +102,7 @@ profileEditForm.addEventListener("submit", saveModal);
 
 initialCards.forEach((cardData) => {
   //calls function that pulls card data
-  const cardElement = GetCardElement(cardData);
+  const cardElement = getCardElement(cardData);
   //push card elemnt into list
   cardListEl.append(cardElement);
 });
