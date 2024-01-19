@@ -40,7 +40,9 @@ const modalDescInput = modal.querySelector("#profile-description-input");
 const profileName = profile.querySelector("#profile-title");
 const profileDesc = profile.querySelector("#profile-description");
 const profileEditForm = modal.querySelector(".modal__form");
-
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
+const cardListEl = document.querySelector(".cards__list");
 //this function opens the modal box for the profile editor
 function openModal() {
   //grab current profile name from html
@@ -81,3 +83,19 @@ modalCloseBtn.addEventListener("click", closeModal);
 
 //listens for the form being submited
 profileEditForm.addEventListener("submit", saveModal);
+
+initialCards.forEach((cardData) => {
+  //clone the template
+  const cardElement = cardTemplate.cloneNode(true);
+  //grab the card title and image
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const cardtitleEl = cardElement.querySelector(".card__text");
+  //set card title
+  cardtitleEl.textContent = cardData.name;
+  //set card image and alt name
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
+  //console.log(cardElement);
+  //push card elemnt into list
+  cardListEl.append(cardElement);
+});
