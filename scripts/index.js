@@ -33,6 +33,7 @@ const initialCards = [
 const modal = document.querySelector("#profile-edit-modal");
 const modalCloseBtn = modal.querySelector("#profile-edit-modal-close-btn");
 const modalSaveBtn = modal.querySelector("#profile-edit-save-btn");
+
 const profile = document.querySelector("#profile");
 const profileEditBtn = profile.querySelector("#profile-edit-btn");
 const modalNameInput = modal.querySelector("#profile-name-input");
@@ -43,6 +44,13 @@ const profileEditForm = modal.querySelector(".modal__form");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
+//card modal consts
+const cardModal = document.querySelector("#card-edit-modal");
+const cardEditBtn = profile.querySelector("#card-add-button");
+const cardCloseBtn = cardModal.querySelector("#card-edit-modal-close-btn");
+const cardTitleInput = cardModal.querySelector("#card-title-input");
+const cardImgLinkInput = cardModal.querySelector("#image-link-input");
+const cardEditForm = cardModal.querySelector(".modal__form");
 
 //this function opens the modal box for the profile editor
 function openModal() {
@@ -78,14 +86,38 @@ function closeModal() {
   modal.classList.remove("modal_opened");
 }
 
+function openCardModal() {
+  //open modal
+  cardModal.classList.add("modal_opened");
+}
+
+//this function closes the card editor
+function closeCardModal() {
+  cardModal.classList.remove("modal_opened");
+}
+
+//saves the values inputted into the card modal and displays them on the page
+function saveCardModal(e) {
+  //prevent page from re loading
+  e.preventDefault();
+  //grab input name
+  const inputTitle = cardTitleInput.value;
+  //grab img link
+  const inputImgLink = cardImgLinkInput.value;
+  //push values to cards array
+
+  //run funtion to display cards
+  closeCardModal();
+}
+
 function getCardElement(cardData) {
   //clone the template
   const cardElement = cardTemplate.cloneNode(true);
   //grab the card title and image
   const cardImageEl = cardElement.querySelector(".card__image");
-  const cardtitleEl = cardElement.querySelector(".card__text");
+  const cardTitleEl = cardElement.querySelector(".card__text");
   //set card title
-  cardtitleEl.textContent = cardData.name;
+  cardTitleEl.textContent = cardData.name;
   //set card image and alt name
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -93,12 +125,15 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-//these listen for the clicks, and open the modal
+//these listen for clicks for profile edit modal
 profileEditBtn.addEventListener("click", openModal);
 modalCloseBtn.addEventListener("click", closeModal);
-
-//listens for the form being submited
 profileEditForm.addEventListener("submit", saveModal);
+
+//listen for button clicks for card modal
+cardEditBtn.addEventListener("click", openCardModal);
+cardCloseBtn.addEventListener("click", closeCardModal);
+cardEditForm.addEventListener("submit", saveCardModal);
 
 initialCards.forEach((cardData) => {
   //calls function that pulls card data
