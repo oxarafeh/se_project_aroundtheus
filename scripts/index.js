@@ -116,13 +116,30 @@ function getCardElement(cardData) {
   //grab the card title and image
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__text");
+  const likeBtn = cardElement.querySelector("#like-button");
+  //handle like clicks
+  likeBtn.addEventListener("click", () => {
+    likeBtn.classList.toggle("card__button_liked");
+  });
+
+  //find delete button
+  //add event listener to button
+  //cardElement.remove();
+
+  //add click listener for card image
+  //open image as modal
+
   //set card title
   cardTitleEl.textContent = cardData.name;
   //set card image and alt name
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
-  //console.log(cardElement);
+
   return cardElement;
+}
+
+function toggleLike() {
+  likeBtn.classList.toggle("card__button_liked");
 }
 
 //these listen for clicks for profile edit modal

@@ -47,7 +47,14 @@
   background: transparent url(../images/heart.svg) center no-repeat;
   height: 18px;
   width: 21px;
+  background-size: 21px 18px;
   border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card__button_liked {
+  background-image: url(../images/Heart_active.svg);
 }
 
 .card__button:hover {
