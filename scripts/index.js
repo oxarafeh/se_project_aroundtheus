@@ -95,17 +95,21 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
 
+function renderCard(cardData, wrapper) {
+  const cardElement = getCardElement(cardData);
+  wrapper.prepend(cardElement);
+}
+
 //saves the values inputted into the card modal and displays them on the page
 function saveCardModal(e) {
   //prevent page from re loading
   e.preventDefault();
   //grab input name
-  const inputTitle = cardTitleInput.value;
+  const name = cardTitleInput.value;
   //grab img link
-  const inputImgLink = cardImgLinkInput.value;
-  //push values to cards array
-
-  //run funtion to display cards
+  const link = cardImgLinkInput.value;
+  //run function to create card
+  renderCard({ name, link }, cardListEl);
   closeModal(cardModal);
 }
 
@@ -152,8 +156,5 @@ cardCloseBtn.addEventListener("click", () => closeModal(cardModal));
 cardEditForm.addEventListener("submit", saveCardModal);
 
 initialCards.forEach((cardData) => {
-  //calls function that pulls card data
-  const cardElement = getCardElement(cardData);
-  //push card elemnt into list
-  cardListEl.append(cardElement);
+  renderCard(cardData, cardListEl);
 });
