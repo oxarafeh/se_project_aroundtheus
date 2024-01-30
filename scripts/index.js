@@ -55,6 +55,9 @@ const cardCloseBtn = cardModal.querySelector("#card-edit-modal-close-btn");
 const cardTitleInput = cardModal.querySelector("#card-title-input");
 const cardImgLinkInput = cardModal.querySelector("#image-link-input");
 const cardEditForm = cardModal.querySelector(".modal__form");
+//image modal consts
+const imageModal = document.querySelector("#image-display-modal");
+const imageClostBtn = imageModal.querySelector(".modal__close");
 
 //this function opens the modal box for the profile editor
 function openProfileModal() {
@@ -120,6 +123,10 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__text");
   const likeBtn = cardElement.querySelector("#like-button");
+  //find image for click
+  const modalImage = imageModal.querySelector(".modal__image");
+  const modalDesc = imageModal.querySelector(".modal__description");
+
   //handle like clicks
   likeBtn.addEventListener("click", () => {
     likeBtn.classList.toggle("card__button_liked");
@@ -133,7 +140,12 @@ function getCardElement(cardData) {
   });
 
   //add click listener for card image
-  //open image as modal
+  cardImageEl.addEventListener("click", () => {
+    modalImage.src = cardData.link;
+    modalImage.alt = cardData.name;
+    modalDesc.textContent = cardData.name;
+    openModal(imageModal);
+  });
 
   //set card title
   cardTitleEl.textContent = cardData.name;
@@ -157,5 +169,8 @@ profileEditForm.addEventListener("submit", saveProfileEditModal);
 cardEditBtn.addEventListener("click", () => openModal(cardModal));
 cardCloseBtn.addEventListener("click", () => closeModal(cardModal));
 cardEditForm.addEventListener("submit", saveCardModal);
+
+//listeners for image modal
+imageClostBtn.addEventListener("click", () => closeModal(imageModal));
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
