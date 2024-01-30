@@ -30,17 +30,21 @@ const initialCards = [
   },
 ];
 
-const modal = document.querySelector("#profile-edit-modal");
-const modalCloseBtn = modal.querySelector("#profile-edit-modal-close-btn");
-const modalSaveBtn = modal.querySelector("#profile-edit-save-btn");
+const profileEditModal = document.querySelector("#profile-edit-modal");
+const modalCloseBtn = profileEditModal.querySelector(
+  "#profile-edit-modal-close-btn"
+);
+const modalSaveBtn = profileEditModal.querySelector("#profile-edit-save-btn");
 
 const profile = document.querySelector("#profile");
 const profileEditBtn = profile.querySelector("#profile-edit-btn");
-const modalNameInput = modal.querySelector("#profile-name-input");
-const modalDescInput = modal.querySelector("#profile-description-input");
+const modalNameInput = profileEditModal.querySelector("#profile-name-input");
+const modalDescInput = profileEditModal.querySelector(
+  "#profile-description-input"
+);
 const profileName = profile.querySelector("#profile-title");
 const profileDesc = profile.querySelector("#profile-description");
-const profileEditForm = modal.querySelector(".modal__form");
+const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
@@ -53,7 +57,7 @@ const cardImgLinkInput = cardModal.querySelector("#image-link-input");
 const cardEditForm = cardModal.querySelector(".modal__form");
 
 //this function opens the modal box for the profile editor
-function openModal() {
+function openProfileModal() {
   //grab current profile name from html
   const currentName = profileName.textContent;
   //grab current description from html
@@ -63,12 +67,12 @@ function openModal() {
   //insert current description into modal
   modalDescInput.value = currentDesc;
   //open modal
-  modal.classList.add("modal_opened");
+  profileEditModal.classList.add("modal_opened");
   //console.log(currentName);
 }
 
 //saves the values inputted into the modal and displays them on the page
-function saveModal(e) {
+function saveProfileEditModal(e) {
   //prevent page from re loading
   e.preventDefault();
   //grab input name
@@ -78,22 +82,17 @@ function saveModal(e) {
   //set values equal to page values
   profileName.textContent = inputName;
   profileDesc.textContent = inputDesc;
-  closeModal();
+  closeModal(profileEditModal);
 }
 
-//this function closes the profile editor
-function closeModal() {
-  modal.classList.remove("modal_opened");
-}
-
-function openCardModal() {
+function openModal(modal) {
   //open modal
-  cardModal.classList.add("modal_opened");
+  modal.classList.add("modal_opened");
 }
 
 //this function closes the card editor
-function closeCardModal() {
-  cardModal.classList.remove("modal_opened");
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
 }
 
 //saves the values inputted into the card modal and displays them on the page
@@ -107,7 +106,7 @@ function saveCardModal(e) {
   //push values to cards array
 
   //run funtion to display cards
-  closeCardModal();
+  closeModal(cardModal);
 }
 
 function getCardElement(cardData) {
@@ -143,13 +142,13 @@ function toggleLike() {
 }
 
 //these listen for clicks for profile edit modal
-profileEditBtn.addEventListener("click", openModal);
-modalCloseBtn.addEventListener("click", closeModal);
-profileEditForm.addEventListener("submit", saveModal);
+profileEditBtn.addEventListener("click", openProfileModal);
+modalCloseBtn.addEventListener("click", () => closeModal(profileEditModal));
+profileEditForm.addEventListener("submit", saveProfileEditModal);
 
 //listen for button clicks for card modal
-cardEditBtn.addEventListener("click", openCardModal);
-cardCloseBtn.addEventListener("click", closeCardModal);
+cardEditBtn.addEventListener("click", () => openModal(cardModal));
+cardCloseBtn.addEventListener("click", () => closeModal(cardModal));
 cardEditForm.addEventListener("submit", saveCardModal);
 
 initialCards.forEach((cardData) => {
