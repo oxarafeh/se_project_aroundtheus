@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  position: relative;
 }
 
 .card__image {
@@ -9,6 +10,25 @@
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0 0;
+}
+
+.card__delete-button {
+  background: transparent url(../images/trash.svg) center no-repeat;
+  height: 19px;
+  width: 18px;
+  background-size: 19px 18px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  left: 250px;
+  top: 18px;
+  z-index: 400;
+}
+
+.card__delete-button:hover {
+  cursor: pointer;
+  opacity: 60%;
 }
 
 .card__description {

@@ -126,8 +126,11 @@ function getCardElement(cardData) {
   });
 
   //find delete button
+  const cardDeleteBtn = cardElement.querySelector(".card__delete-button");
   //add event listener to button
-  //cardElement.remove();
+  cardDeleteBtn.addEventListener("click", () => {
+    cardElement.remove();
+  });
 
   //add click listener for card image
   //open image as modal
@@ -155,6 +158,4 @@ cardEditBtn.addEventListener("click", () => openModal(cardModal));
 cardCloseBtn.addEventListener("click", () => closeModal(cardModal));
 cardEditForm.addEventListener("submit", saveCardModal);
 
-initialCards.forEach((cardData) => {
-  renderCard(cardData, cardListEl);
-});
+initialCards.forEach((cardData) => renderCard(cardData, cardListEl));

@@ -101,6 +101,10 @@
   cursor: pointer;
   margin-top: 18px;
 }
+.modal__button:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
 
 .modal__input {
   font-family: "Inter", "arial", sans-serif;
