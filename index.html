@@ -68,6 +68,9 @@
             name="title"
             id="profile-name-input"
             class="modal__input"
+            required
+            minlength="2"
+            maxlength="40"
           />
           <input
             type="text"
@@ -75,6 +78,9 @@
             name="paragraph"
             id="profile-description-input"
             class="modal__input"
+            required
+            minlength="2"
+            maxlength="200"
           />
           <button
             type="submit"
@@ -90,7 +96,7 @@
     <div class="modal" id="card-edit-modal">
       <div class="modal__container">
         <p class="modal__heading">New Place</p>
-        <form action="URL" class="modal__form">
+        <form action="URL" class="modal__form" novalidate>
           <button
             type="button"
             class="modal__close"
@@ -102,6 +108,9 @@
             name="title"
             id="card-title-input"
             class="modal__input"
+            required
+            minlength="1"
+            maxlength="30"
           />
           <input
             type="text"
@@ -109,6 +118,7 @@
             name="image"
             id="image-link-input"
             class="modal__input"
+            required
           />
           <button type="submit" class="modal__button" id="create-card-save-btn">
             Create
