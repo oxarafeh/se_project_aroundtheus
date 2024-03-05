@@ -44,7 +44,7 @@ const modalDescInput = profileEditModal.querySelector(
 );
 const profileName = profile.querySelector("#profile-title");
 const profileDesc = profile.querySelector("#profile-description");
-const profileEditForm = profileEditModal.querySelector(".modal__form");
+const profileEditForm = document.forms["profile-edit-form"];
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardListEl = document.querySelector(".cards__list");
@@ -54,7 +54,7 @@ const cardEditBtn = profile.querySelector("#card-add-button");
 const cardCloseBtn = cardModal.querySelector("#card-edit-modal-close-btn");
 const cardTitleInput = cardModal.querySelector("#card-title-input");
 const cardImgLinkInput = cardModal.querySelector("#image-link-input");
-const cardEditForm = cardModal.querySelector(".modal__form");
+const cardEditForm = document.forms["card-edit-form"];
 //image modal consts
 const imageModal = document.querySelector("#image-display-modal");
 const imageClostBtn = imageModal.querySelector(".modal__close");
@@ -108,7 +108,6 @@ function openModal(modal) {
 
   //open modal
   modal.classList.add("modal_opened");
-  enableValidation();
 }
 
 //this function closes the card editor

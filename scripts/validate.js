@@ -59,3 +59,5 @@ function enableValidation() {
     setEventListeners(formElement);
   });
 }
+
+enableValidation();
