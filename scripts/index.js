@@ -61,6 +61,8 @@ const imageClostBtn = imageModal.querySelector(".modal__close");
 //find close buttons
 const closeButtons = document.querySelectorAll(".modal__close");
 
+/////////////////////////////////////////////////////////////functions/////////////////////////////////////////////////
+
 //this function opens the modal box for the profile editor
 function openProfileModal() {
   //grab current profile name from html
@@ -73,7 +75,6 @@ function openProfileModal() {
   modalDescInput.value = currentDesc;
   //open modal
   openModal(profileEditModal);
-  //console.log(currentName);
 }
 
 //saves the values inputted into the modal and displays them on the page
@@ -91,8 +92,23 @@ function saveProfileEditModal(e) {
 }
 
 function openModal(modal) {
+  //check if modal is attempted to be closed by escape
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeModal(modal);
+    }
+  });
+
+  modal.addEventListener("click", (event) => {
+    console.log(event.target);
+    if (event.target === modal) {
+      closeModal(modal);
+    }
+  });
+
   //open modal
   modal.classList.add("modal_opened");
+  enableValidation();
 }
 
 //this function closes the card editor
@@ -177,26 +193,9 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closeModal(popup));
 });
 
-////////////////////////////////////////////////////Form Validation/////////////////////////////////////////////
-
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("form__input_type_error");
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add("form__input-error_active");
-};
-
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("form__input_type_error");
-  errorElement.classList.remove("form__input-error_active");
-  errorElement.textContent = "";
-};
-
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
+/*function keyHandler(evt) {
+  if (evt.key === "Escape") {
+    //closeModal(evt.curentTarget);
   }
-};
+  console.log(evt.curentTarget);
+}*/

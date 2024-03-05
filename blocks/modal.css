@@ -134,9 +134,15 @@
   cursor: pointer;
   margin-top: 18px;
 }
+
 .modal__button:hover {
   cursor: pointer;
   opacity: 80%;
+}
+
+.modal__button_inactive {
+  pointer-events: none;
+  opacity: 10%;
 }
 
 .modal__input {
