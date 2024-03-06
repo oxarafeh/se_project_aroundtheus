@@ -140,7 +140,7 @@
   opacity: 80%;
 }
 
-.modal__button_inactive {
+.modal__button:disabled {
   pointer-events: none;
   opacity: 10%;
 }

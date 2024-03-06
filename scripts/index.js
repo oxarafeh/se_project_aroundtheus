@@ -92,22 +92,11 @@ function saveProfileEditModal(e) {
 }
 
 function openModal(modal) {
-  //check if modal is attempted to be closed by escape
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeModal(modal);
-    }
-  });
-
-  modal.addEventListener("click", (event) => {
-    console.log(event.target);
-    if (event.target === modal) {
-      closeModal(modal);
-    }
-  });
-
   //open modal
   modal.classList.add("modal_opened");
+  //add listener for escape or document click
+  modal.addEventListener("click", clickHandler);
+  modal.addEventListener("keydown", escHandler);
 }
 
 //this function closes the card editor
@@ -192,9 +181,16 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closeModal(popup));
 });
 
-/*function keyHandler(evt) {
-  if (evt.key === "Escape") {
-    //closeModal(evt.curentTarget);
+function clickHandler(event) {
+  if (event.target === event.currentTarget) {
+    closeModal(event.currentTarget);
+    event.currentTarget.removeEventListener("click", clickHandler);
   }
-  console.log(evt.curentTarget);
-}*/
+}
+
+function escHandler(event) {
+  if (event.key === "Escape") {
+    closeModal(event.currentTarget);
+    event.currentTarget.removeEventListener("keydown", escHandler);
+  }
+}
