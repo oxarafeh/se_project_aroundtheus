@@ -96,12 +96,14 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   //add listener for escape or document click
   modal.addEventListener("click", clickHandler);
-  modal.addEventListener("keydown", escHandler);
+  document.addEventListener("keydown", escHandler);
 }
 
 //this function closes the card editor
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  modal.removeEventListener("click", clickHandler);
+  document.removeEventListener("keydown", escHandler);
 }
 
 function renderCard(cardData, wrapper) {
@@ -184,13 +186,12 @@ closeButtons.forEach((button) => {
 function clickHandler(event) {
   if (event.target === event.currentTarget) {
     closeModal(event.currentTarget);
-    event.currentTarget.removeEventListener("click", clickHandler);
   }
 }
 
 function escHandler(event) {
   if (event.key === "Escape") {
-    closeModal(event.currentTarget);
-    event.currentTarget.removeEventListener("keydown", escHandler);
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
   }
 }
