@@ -1,3 +1,5 @@
+import Card from "../components/Card";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -29,6 +31,8 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg ",
   },
 ];
+
+//go over all of the initial cards and instantiate as card obj as per Card.js
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const modalCloseBtn = profileEditModal.querySelector(
