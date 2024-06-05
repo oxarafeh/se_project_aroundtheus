@@ -1,4 +1,4 @@
-import Card from "../components/Card";
+import Card from "../components/Card.js";
 
 const initialCards = [
   {
@@ -32,7 +32,28 @@ const initialCards = [
   },
 ];
 
+
+/////////////////////////////////////////////New OO stuff/////////////////////////////////////////
 //go over all of the initial cards and instantiate as card obj as per Card.js
+function createCard(name, link){
+
+  return newCard;
+};
+
+const card = new Card(cardData);
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const modalCloseBtn = profileEditModal.querySelector(
