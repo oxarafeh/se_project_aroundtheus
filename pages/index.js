@@ -33,27 +33,9 @@ const initialCards = [
 ];
 
 
-/////////////////////////////////////////////New OO stuff/////////////////////////////////////////
-//go over all of the initial cards and instantiate as card obj as per Card.js
-function createCard(name, link){
-
-  return newCard;
-};
-
-const card = new Card(cardData);
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+/* -------------------------------------------------------------------------- */
+/*                       All selectors for tags in HTML                       */
+/* -------------------------------------------------------------------------- */
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const modalCloseBtn = profileEditModal.querySelector(
@@ -86,7 +68,11 @@ const imageClostBtn = imageModal.querySelector(".modal__close");
 //find close buttons
 const closeButtons = document.querySelectorAll(".modal__close");
 
-/////////////////////////////////////////////////////////////functions/////////////////////////////////////////////////
+
+/* -------------------------------------------------------------------------- */
+/*                                  functions                                 */
+/* -------------------------------------------------------------------------- */
+
 
 //this function opens the modal box for the profile editor
 function openProfileModal() {
@@ -220,3 +206,27 @@ function escHandler(event) {
     closeModal(openedModal);
   }
 }
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                          New Object oriented stuff                         */
+/* -------------------------------------------------------------------------- */
+
+
+//go over all of the initial cards and instantiate as card obj as per Card.js
+initialCards.forEach (function(card){
+//clone the template
+const cardElement = cardTemplate.cloneNode(true);
+//grab the name
+//grab the image
+cardElement.querySelector(".card__text").textContent = card.name;
+cardElement.querySelector(".card__image").style.backgroundImage = `url(${card.link})`;
+
+//add event listeners to elements
+//append to list
+cardListEl.append(cardElement);
+});
+
+
+//const card = new Card(cardData);
