@@ -33,6 +33,14 @@ const initialCards = [
 ];
 
 
+const cardData = {
+      name: "Yosemite Valley",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+}
+
+const card = new Card(cardData, "#card-template");
+card.getView();
+
 /* -------------------------------------------------------------------------- */
 /*                       All selectors for tags in HTML                       */
 /* -------------------------------------------------------------------------- */
@@ -117,10 +125,10 @@ function closeModal(modal) {
   document.removeEventListener("keydown", escHandler);
 }
 
-function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
-}
+//  function renderCard(cardData, wrapper) {
+//    const cardElement = getCardElement(cardData);
+//    wrapper.prepend(cardElement);
+// }
 
 //saves the values inputted into the card modal and displays them on the page
 function saveCardModal(e) {
@@ -136,28 +144,29 @@ function saveCardModal(e) {
   closeModal(cardModal);
 }
 
+
 function getCardElement(cardData) {
   //clone the template
-  const cardElement = cardTemplate.cloneNode(true);
+  //const cardElement = cardTemplate.cloneNode(true);
   //grab the card title and image
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__text");
-  const likeBtn = cardElement.querySelector("#like-button");
+  //const cardImageEl = cardElement.querySelector(".card__image");
+  //const cardTitleEl = cardElement.querySelector(".card__text");
+  //const likeBtn = cardElement.querySelector("#like-button");
   //find image for click
   const modalImage = imageModal.querySelector(".modal__image");
   const modalDesc = imageModal.querySelector(".modal__description");
 
-  //handle like clicks
-  likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("card__button_liked");
-  });
+  // //handle like clicks
+  // likeBtn.addEventListener("click", () => {
+  //   likeBtn.classList.toggle("card__button_liked");
+  // });
 
-  //find delete button
-  const cardDeleteBtn = cardElement.querySelector(".card__delete-button");
-  //add event listener to button
-  cardDeleteBtn.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  // //find delete button
+  // const cardDeleteBtn = cardElement.querySelector(".card__delete-button");
+  // //add event listener to button
+  // cardDeleteBtn.addEventListener("click", () => {
+  //   cardElement.remove();
+  // });
 
   //add click listener for card image
   cardImageEl.addEventListener("click", () => {
@@ -184,8 +193,19 @@ profileEditForm.addEventListener("submit", saveProfileEditModal);
 cardEditBtn.addEventListener("click", () => openModal(cardModal));
 cardEditForm.addEventListener("submit", saveCardModal);
 
-//listeners for image modal
-initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+//renders all initial cards
+initialCards.forEach((cardData) => {
+
+  //create card object 
+  const card = new Card(cardData, cardTemplate);
+  const cardElement = card.getView();
+
+  //Add card to page 
+  card.renderCard(cardElement, cardListEl);
+
+
+
+});
 
 closeButtons.forEach((button) => {
   // find the closest popup
@@ -206,27 +226,3 @@ function escHandler(event) {
     closeModal(openedModal);
   }
 }
-
-
-
-/* -------------------------------------------------------------------------- */
-/*                          New Object oriented stuff                         */
-/* -------------------------------------------------------------------------- */
-
-
-//go over all of the initial cards and instantiate as card obj as per Card.js
-initialCards.forEach (function(card){
-//clone the template
-const cardElement = cardTemplate.cloneNode(true);
-//grab the name
-//grab the image
-cardElement.querySelector(".card__text").textContent = card.name;
-cardElement.querySelector(".card__image").style.backgroundImage = `url(${card.link})`;
-
-//add event listeners to elements
-//append to list
-cardListEl.append(cardElement);
-});
-
-
-//const card = new Card(cardData);
