@@ -32,15 +32,6 @@ const initialCards = [
   },
 ];
 
-
-const cardData = {
-      name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-}
-
-const card = new Card(cardData, "#card-template");
-card.getView();
-
 /* -------------------------------------------------------------------------- */
 /*                       All selectors for tags in HTML                       */
 /* -------------------------------------------------------------------------- */
@@ -80,6 +71,18 @@ const closeButtons = document.querySelectorAll(".modal__close");
 /* -------------------------------------------------------------------------- */
 /*                                  functions                                 */
 /* -------------------------------------------------------------------------- */
+
+//renders all initial cards
+initialCards.forEach((cardData) => {
+
+  //create card object 
+  const card = new Card(cardData, cardTemplate);
+  const cardElement = card.getView();
+
+  //Add card to page 
+  card.renderCard(cardElement, cardListEl);
+
+});
 
 
 //this function opens the modal box for the profile editor
@@ -139,13 +142,18 @@ function saveCardModal(e) {
   //grab img link
   const link = cardImgLinkInput.value;
   //run function to create card
-  renderCard({ name, link }, cardListEl);
+  //create card object 
+  const card = new Card(cardData, cardTemplate);
+  const cardElement = card.getView();
+
+  //Add card to page 
+  card.renderCard(cardElement, cardListEl);
   e.target.reset();
   closeModal(cardModal);
 }
 
 
-function getCardElement(cardData) {
+//function getCardElement(cardData) {
   //clone the template
   //const cardElement = cardTemplate.cloneNode(true);
   //grab the card title and image
@@ -153,8 +161,8 @@ function getCardElement(cardData) {
   //const cardTitleEl = cardElement.querySelector(".card__text");
   //const likeBtn = cardElement.querySelector("#like-button");
   //find image for click
-  const modalImage = imageModal.querySelector(".modal__image");
-  const modalDesc = imageModal.querySelector(".modal__description");
+  //const modalImage = imageModal.querySelector(".modal__image");
+  //const modalDesc = imageModal.querySelector(".modal__description");
 
   // //handle like clicks
   // likeBtn.addEventListener("click", () => {
@@ -169,21 +177,21 @@ function getCardElement(cardData) {
   // });
 
   //add click listener for card image
-  cardImageEl.addEventListener("click", () => {
-    modalImage.src = cardData.link;
-    modalImage.alt = cardData.name;
-    modalDesc.textContent = cardData.name;
-    openModal(imageModal);
-  });
+  // cardImageEl.addEventListener("click", () => {
+  //   modalImage.src = cardData.link;
+  //   modalImage.alt = cardData.name;
+  //   modalDesc.textContent = cardData.name;
+  //   openModal(imageModal);
+  // });
 
   //set card title
-  cardTitleEl.textContent = cardData.name;
+  //cardTitleEl.textContent = cardData.name;
   //set card image and alt name
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
+  //cardImageEl.src = cardData.link;
+  //cardImageEl.alt = cardData.name;
 
-  return cardElement;
-}
+  //return cardElement;
+//}
 
 //these listen for clicks for profile edit modal
 profileEditBtn.addEventListener("click", openProfileModal);
@@ -193,19 +201,7 @@ profileEditForm.addEventListener("submit", saveProfileEditModal);
 cardEditBtn.addEventListener("click", () => openModal(cardModal));
 cardEditForm.addEventListener("submit", saveCardModal);
 
-//renders all initial cards
-initialCards.forEach((cardData) => {
 
-  //create card object 
-  const card = new Card(cardData, cardTemplate);
-  const cardElement = card.getView();
-
-  //Add card to page 
-  card.renderCard(cardElement, cardListEl);
-
-
-
-});
 
 closeButtons.forEach((button) => {
   // find the closest popup
